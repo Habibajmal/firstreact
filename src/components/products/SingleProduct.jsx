@@ -9,7 +9,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 import userService from "../../services/UserService";
-import params from "react-router-dom";
+import productService from "../../services/ProductService"
+
+import Purcahse from './purchase';
 import axios from "axios";
 import { propTypes } from 'react-bootstrap/esm/Image';
 var cardStyle = {
@@ -57,19 +59,35 @@ const SingleProduct = ({ product }) => {
       </CardActionArea>
    
       <CardActions>
+      {   userService.isLoggedIn()&&(
+      <>
+      <Purcahse amount={product.price} product={product} delcart={()=>{}}/>
+      </>
+    )
+    }
+
    
-      {userService.isLoggedIn() &&
-        <Button size="small" color="primary" variant="outlined"
-        onClick={(e) => {
-        
-        
-              window.location.assign("http://localhost:3000/product/updateproduct/"+product._id);
-            
-          }}
-        >
-          Edit
-        </Button>
+
+<Button size="small" color="primary" variant="outlined"
+onClick={(e)=>{
+
+  productService.postcart(product._id)
+  .then((data) => {
+    console.log(data);
+    window.location.reload();
+   
+  })
+    .catch((err) => {
+    console.log(err);
+  });        
+    window.location.assign("http://localhost:3000/product")    
 }
+}
+>
+  add to cart
+</Button>
+
+<div>
 {userService.isAdmin() &&
         <Button size="small" color="primary" variant="outlined"
         onClick={(e) => {
@@ -87,18 +105,21 @@ const SingleProduct = ({ product }) => {
           Delete
         </Button>
 }
-{userService.isLoggedIn() &&
+
+{userService.isAdmin() &&
         <Button size="small" color="primary" variant="outlined"
         onClick={(e) => {
         
         
-              window.location.assign("http://localhost:3000/order/"+product._id);
+              window.location.assign("http://localhost:3000/product/updateproduct/"+product._id);
             
           }}
         >
-          Purchase
+          Edit
         </Button>
 }
+</div>
+
       </CardActions>
     </Card>
 

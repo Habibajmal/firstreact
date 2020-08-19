@@ -28,7 +28,7 @@ const Products = (props) => {
       .get("http://localhost:4000/product")
       .then((res) => {
         setProducts(res.data);
-        console.log(res.data)
+        
       })
       .catch((err) => {
         console.log(err);
@@ -48,9 +48,7 @@ const Products = (props) => {
        
         <AddIcon />
       </Fab>}
-      {products.length == 0 ? (
-        <p>There are no products</p>
-      ) : (
+      {products.length == 0 ? (<p>There are no products</p>) : (
         <Grid container spacing={3}>
             
           {products.map((product, index) => (
@@ -58,7 +56,6 @@ const Products = (props) => {
             <SingleProduct key={index} product={product} />
           ))}
              
- 
         </Grid>
       )}
     </div>

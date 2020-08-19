@@ -47,6 +47,11 @@ export default function Appbar() {
                 Products
               </Link>
           </Typography>
+          <Typography variant="h6">
+              <Link to="/cart" className={classes.link}>
+                Cart
+              </Link>
+          </Typography>  
           {!userService.isLoggedIn() ? (
           <>
             <Typography variant="h6">

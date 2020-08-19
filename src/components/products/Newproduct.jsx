@@ -60,16 +60,7 @@ const NewProduct=(props) =>
               }}
 
             />
-            <TextField
-              label="Quantity"
-              value={quantity}
-              fullWidth
-              onChange={(e)=>{
-                setQuanity(e.target.value);             
-              }}
-
-            />
-         
+            
           </Grid >
               
 
@@ -107,19 +98,20 @@ const NewProduct=(props) =>
                const data = new FormData();
           data.append("name", name);
           data.append("price", price);
-          data.append("quantity",quantity);
+
           data.append("description", description);
           data.append("productimage",productimage)
                
                 axios.post("http://localhost:4000/product",data)
                   .then ((res)=>{
-                      console.log('upd')
+                      console.log(data)
+
                   })
                   .catch((err)=>
                   {
                       console.log(err)
-                  })
-                  props.history.push("/product");             
+                    })
+                    window.location.assign("http://localhost:3000/product");                       
                 }
               }
              >Submit</button>

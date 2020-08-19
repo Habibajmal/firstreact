@@ -8,11 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/auth/Login';
 import Product from './components/products/Product'
 import Newproduct from './components/products/Newproduct'
+import Carts from './components/products/Carts'
 import Updateproduct from './components/products/Updateproduct'
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
-import  Admin  from './components/Admin';
+
 import Orders from './components/order/Orders';
-import Allorders from './components/order/Allorders';
+import OrderData from './components/products/OrderData';
  
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
               <Route path='/product/newproduct' component={Newproduct}/>
               <Route path='/product/updateproduct/:id' component={Updateproduct}/>
               <Route path='/product' component={Product}/>
-              <Route path='/admin' component={Admin}/>
-              <Route path='/allorder' component={Allorders}/>
+              <Route path='/cart' component={Carts}/>
+              <Route path='/orderdata' component={OrderData}/>
 
 
               <Route path='/register' component={Register}/>
