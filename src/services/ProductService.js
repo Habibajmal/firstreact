@@ -2,7 +2,6 @@ import GenericService from "./GenericService";
 class ProductsService extends GenericService {
 
 
-    purchase_product=(data) => this.post("/product/payment", data)   
 
 
 
@@ -19,6 +18,13 @@ class ProductsService extends GenericService {
 
 
     getorders=()=> this.get("/order/getorder")
+
+    cartinc_qty=(_id)=> this.puts("/carts/cartqtyinc/"+ _id)
+    cartdec_qty=(_id)=> this.puts("/carts/cartqtydec/"+ _id)
+
+    purchase_product=(data) => this.post("/product/payment", data)   
+
+
 }
 
 let productService = new ProductsService();

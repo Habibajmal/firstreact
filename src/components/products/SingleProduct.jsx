@@ -51,9 +51,7 @@ const SingleProduct = ({ product }) => {
           <Typography variant="body2" >
           <h3> Price={product.price}  </h3>
           </Typography>
-          <Typography variant="body2" >
-          <h4> Quantity={product.quantity}  </h4>
-          </Typography>
+       
  
         </CardContent>
       </CardActionArea>
